@@ -1,0 +1,157 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Customer</title>
+    <!-- Link to your CSS file -->
+   <style>
+    .container {
+        max-width: 400px;
+        height: 410px;
+        margin: 0 auto;
+        padding:5px 40px 30px 40px;
+        background:linear-gradient(45deg, #00bcd4, #ffffff);
+        border-radius: 8px;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+        margin-top: 10%;
+    }
+    
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .form-group {
+        margin-bottom: 20px;
+    }
+    
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    /* Style the caret in all input elements */
+
+
+    
+    input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    
+    button[type="submit"] {
+        display: block;
+        width: 100%;
+        font-size: 17px;
+        padding: 10px;
+        background-color: #2628af;
+        color: #fff;
+        border: none;
+        border-radius: 7px;
+        cursor: pointer;
+    }
+    button[type="view"] {
+        align-items: center;
+        justify-content:center;
+        display: block;
+        width: 200px;
+        padding: 10px;
+        background-color: #000000;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 10px;
+        margin-top:40px ;
+    }
+    
+    button[type="submit"]:hover {
+        background-color: rgb(32, 59, 216);
+       filter: drop-shadow(3px,3px, );
+       color: white;
+       transition: all .2s ease-in;
+    }
+    
+    body {
+        background: linear-gradient(135deg, #3498db, #8e44ad);
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+    body,html{
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        font-family: "Gill Sans Extrabold", "Goudy Bookletter 1911";
+
+    }
+    button{
+        font-weight: bold;
+    }
+    .home {
+        background: linear-gradient(#0b0b0b, #343434);
+        border-radius: 7px;
+        text-align: center;
+        width: 100%; /* Adjust width automatically based on content */
+        height: auto; /* Adjust height automatically based on content */
+        padding: 10px 14px; /* Adjust padding as needed */
+        text-decoration: none;
+        font-weight: bold;
+        display: inline-block; /* Ensure the button behaves like an inline element */
+    }
+    
+    @media screen and (max-width: 600px) {
+        .home {
+            font-size: 10px; /* Decrease font size for smaller screens */
+            padding: 10px 14px; /* Decrease padding for smaller screens */
+        }
+    }
+    @media screen and (max-width: 600px) {
+        #submit {
+            font-size: 10px; /* Decrease font size for smaller screens */
+            padding: 10px 14px; /* Decrease padding for smaller screens */
+        }
+    }
+    
+    .home:hover{
+        background-color: rgb(11, 112, 158);
+       box-shadow: 0 0 10px rgb(0, 0, 0);
+       color: white;
+       transition: all .2s ease-in;
+    }
+</style>
+
+</head>
+<body>
+<!-- Your form HTML here -->
+   
+    <div class="container">
+        <h1>Customer Details</h1>
+        <form method="post" class="customer-form">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_customer_name">Customer Name:</label>
+                <input type="text" id="id_customer_name" name="customer_name" maxlength="100" required>
+            </div>
+            <div class="form-group">
+                <label for="id_customer_id">Customer ID:</label>
+                <input type="text" id="id_customer_id" name="customer_id" maxlength="100" required>
+            </div>
+            <div class="form-group">
+                <label for="id_passport_id">Passport ID:</label>
+                <input type="text" id="id_passport_id" name="passport_id" maxlength="100" required>
+            </div>
+            <button  type="submit" id="submit" class="btn btn-primary">SUBMIT</button>
+            <a style="color: white;font-size:17px;text-decoration:none;" href="{% url 'customer_details'%}">
+                <div style="display: flex;align-items:center;justify-content:center;margin-top:10px;text-transform:uppercase;"><div class="home">
+                View Customer Details
+             </div>
+             </div></a>
+        </form>
+    </div>
+    <!-- Add your JavaScript scripts or links here -->
+</body>
+</html>

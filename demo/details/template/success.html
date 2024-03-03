@@ -1,0 +1,95 @@
+<!-- success.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success Page</title>
+    <style>
+        /* CSS animation for success message */
+        @keyframes successAnimation {
+            0% { transform: translateY(-100px); opacity: 0; }
+            100% { transform: translateY(0); opacity: 1; }
+        }
+        .success-message {
+            margin-top: 25%;
+            text-align: center;
+            font-size: 24px;
+            color: white;
+            font-weight: bold;
+            font-size: 30px;
+            animation: successAnimation 0.5s ease-out;
+        }
+        html{
+            background: linear-gradient(#0c2fa3, #ab09ae);
+            background-size:cover;
+            background-repeat:no-repeat;
+            color: white;
+        }
+        body,html{
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+        .button-container a {
+            display: inline-block;
+            padding: 10px 20px;
+          
+            color: #fff200;
+            text-decoration: none;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            justify-content: center;
+            background-color: transparent;
+            text-decoration: underline;
+        }
+        a:hover{
+            color: rgb(26, 242, 250);
+        }
+        .home {
+            background: linear-gradient(#ed2929, #ed2012);
+            border-radius: 12px;
+            text-align: center;
+     /* Adjust width automatically based on content */
+            height: auto; /* Adjust height automatically based on content */
+            color: white;
+            padding: 8px 12px; /* Adjust padding as needed */
+            text-decoration: none;
+            border-radius: 5px;
+            width:140px;
+            font-weight: bold;
+            display: inline-block; /* Ensure the button behaves like an inline element */
+        }
+        
+        @media screen and (max-width: 600px) {
+            .home {
+                font-size: 10px; /* Decrease font size for smaller screens */
+                padding: 6px 8px; /* Decrease padding for smaller screens */
+            }
+        }
+        
+        .home:hover{
+            background:linear-gradient(#d51c5a, #40aec9);
+            color: rgb(255, 254, 254);
+            transition: all .2s ease-in;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="success-message">
+        Customer details successfully stored!
+    </div>
+    <a style="color: white;font-size:17px;text-decoration:none;" href="/"><div style="display: flex;align-items:center;justify-content:center;margin-top:20px;"><div class="home">
+        Go To Home
+    </div>
+    </div></a>
+    <a style="color: white;font-size:17px;text-decoration:none;" href="{% url 'customer_details'%}"><div style="display: flex;align-items:center;justify-content:center;margin-top:10px;"><div class="home">
+        Customer Details
+     </div>
+     </div></a>
+    
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Customer Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+        button[type="submit"] {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>EDIT CUSTOMER DETAILS</h1>
+    <form id="customerForm" method="post">
+        {% csrf_token %}
+        <table>
+            <thead>
+                <tr>
+                    <th>S.NO</th>
+                    <th>CUSTOMER NAME</th>
+                    <th>CUSTOMER ID</th>
+                    <th>PASSPORT ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{ formset.management_form }}  <!-- Include the management form -->
+                {% for form in formset %}
+                <tr>
+                    <td><input type="text" name="{{ form.prefix }}-s_no" value="{{ form.instance.s_no }}"></td>
+                    <td>{{ form.customer_name }}</td>
+                    <td>{{ form.customer_id }}</td>
+                    <td>{{ form.passport_id }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button type="submit" style="margin-left: 150px;">Save</button>
+    </form>    
+    <script>
+        document.getElementById('customerForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+            
+            var forms = document.querySelectorAll('#customerForm tbody tr');
+            forms.forEach(function(form, index) {
+                var sNoField = form.querySelector('input[name$="s_no"]');
+                sNoField.value = index + 1;
+            });
+            
+            // Once serial numbers are assigned, submit the form
+            document.getElementById('customerForm').submit();
+        });
+    </script>
+</body>
+</html>
+
